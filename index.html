@@ -3,38 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mis XV</title>
+    <title>Mis XV - Invitación</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style>
-        /* Eliminamos todos los bordes y márgenes */
         body, html {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden; /* Evita barras de desplazamiento externas */
-            background-color: #000; /* Fondo negro por si carga, pero el diseño lo cubrirá */
+            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden; /* Evita que la página se mueva hacia los lados */
         }
-        .container {
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        /* Sección de la Invitación de Canva */
+        .canva-section {
             width: 100%;
-            height: 100%;
+            height: 90vh; /* Ocupa casi toda la pantalla para que se vea el inicio de la galería */
+            border: none;
         }
         iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
+
+        /* Título de la Galería */
+        .titulo-galeria {
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+            font-size: 28px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Configuración del Carrusel */
+        .swiper {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px; /* Ancho de las fotos en el carrusel */
+            height: 450px; /* Alto de las fotos */
+        }
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Color de los puntitos de navegación */
+        .swiper-pagination-bullet-active {
+            background: #000;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="canva-section">
         <iframe src="https://www.canva.com/design/DAHC21F5AII/84c7oibemtWI9lhc4cOneA/view?embed" 
                 allowfullscreen="allowfullscreen" allow="fullscreen">
         </iframe>
     </div>
 
+    <h2 class="titulo-galeria">Nuestra Galería</h2>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1L5KnJhlMGZ5TAe-zaUXv49F3zN_83HiI"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1zlhT6WXkLGhKfdGYr_qGSGC02GoLllp0"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1Hr1NZcpJicGEUodYIg4tV6l4iDaOx7Fp"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1CIH5SoFUZqz-Oghx5wPU8fmx7Jg_tgOb"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1LeX2fp44cfQabcLA5pSZOgj6WY0Zd4-V"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/14MdJbWlkYF-VRwTQb-_DRLXNzglQKTXs"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/16vTJatrs-iY_eOk4vNLcy3pSEG4vSx6M"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1tfUC34JC53__RQwIC1EOld4ae9jat4pa"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1zsz8tuNiUGBeafQdStN-r5bo1lZ20hoh"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true, /* Para que sea infinito */
+            coverflowEffect: {
+                rotate: 30,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+    </script>
 </body>
 </html>
