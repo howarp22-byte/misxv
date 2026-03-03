@@ -2,50 +2,57 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Mis XV - Juliana Sofia</title>
     <style>
-        /* Eliminamos cualquier margen y forzamos el fondo rosa para que no haya negro */
-        body, html {
+        /* Eliminamos cualquier rastro de bordes o scroll */
+        * {
             margin: 0;
             padding: 0;
-            height: 100%;
+            box-sizing: border-box;
+        }
+
+        body, html {
             width: 100%;
-            overflow: hidden; /* Evita que la página baile */
-            background-color: #fce4ec; /* Un tono rosado acorde a tu diseño */
+            height: 100%;
+            overflow: hidden; /* Evita que el usuario mueva la pantalla fuera del diseño */
+            background-color: #ffffff; /* O el color exacto de tu diseño para fundirse */
         }
 
-        .canva-wrapper {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+        .main-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* El truco: hacemos que el iframe sea un poco más grande y se centre */
+        /* El truco para eliminar los bordes es que el iframe sea ligeramente 
+           más grande que la pantalla para que los márgenes de Canva queden "fuera" */
         iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            transform: translate(-50%, -50%) scale(1.02); /* El scale 1.02 elimina bordes finos */
+            width: 101vw;
+            height: 101vh;
             border: none;
+            outline: none;
+            /* Escalamos un poco para asegurar que desaparezca cualquier línea residual */
+            transform: scale(1.05); 
+            transform-origin: center;
         }
 
-        /* Ajuste específico para que el contenido de Canva se estire a llenar */
-        @media (max-aspect-ratio: 9/16) {
+        /* Optimizamos para que en celulares largos no aparezcan franjas */
+        @media screen and (max-aspect-ratio: 9/18) {
             iframe {
-                height: 100%;
-                width: auto;
-                min-width: 100vw;
+                height: 110vh; /* Estiramos un poco más en pantallas muy largas como iPhone 15/16 */
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="canva-wrapper">
+    <div class="main-container">
         <iframe src="https://www.canva.com/design/DAHC21F5AII/84c7oibemtWI9lhc4cOneA/view?embed" 
                 allowfullscreen="allowfullscreen" allow="fullscreen">
         </iframe>
